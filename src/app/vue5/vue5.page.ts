@@ -4,6 +4,8 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
+  IonButtons,
+  IonBackButton,
   IonContent,
   IonList,
   IonItem,
@@ -12,22 +14,24 @@ import {
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-vue5',
   standalone: true,
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  templateUrl: './vue5.page.html',
+  styleUrls: ['./vue5.page.scss'],
   imports: [
     CommonModule,
     RouterLink,
     IonHeader,
     IonToolbar,
     IonTitle,
+    IonButtons,
+    IonBackButton,
     IonContent,
     IonList,
     IonItem,
     IonLabel,
   ],
 })
-export class HomePage {
+export class Vue5Page {
   constructor() {}
 }

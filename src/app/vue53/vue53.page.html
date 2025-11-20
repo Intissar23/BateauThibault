@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/vue5"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Promotions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Produits en promotion</h2>
+
+  <ion-list>
+
+    <!-- AJOUT : (click)="onProductClick(product)" -->
+    <ion-item *ngFor="let product of products"
+              (click)="onProductClick(product)">
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price }} € / {{ product.unit }}</p>
+
+        <p *ngIf="product.comments">{{ product.comments }}</p>
+
+        <p *ngIf="product.discount && product.discount > 0">
+          🔥 Remise : {{ product.discount }} €
+        </p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
