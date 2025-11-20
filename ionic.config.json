@@ -1,0 +1,7 @@
+{
+  "name": "BateauThibault",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
