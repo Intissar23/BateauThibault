@@ -62,7 +62,19 @@ export const routes: Routes = [
     path: 'vue4x',
     loadComponent: () =>
       import('./vue4x/vue4x.page').then(m => m.Vue4xPage),
+  },  {
+    path: 'cart',
+    loadComponent: () => import('./cart/cart.page').then( m => m.CartPage)
   },
+  {
+    path: 'cart',
+    loadComponent: () => import('./cart/cart.page').then( m => m.CartPage)
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('./cart/cart.page').then( m => m.CartPage)
+  },
+
 
   // Vue 5 : Produits (travail Personne 2)
   
