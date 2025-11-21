@@ -62,20 +62,47 @@ export const routes: Routes = [
     path: 'vue4x',
     loadComponent: () =>
       import('./vue4x/vue4x.page').then(m => m.Vue4xPage),
-  },  {
-    path: 'cart',
-    loadComponent: () => import('./cart/cart.page').then( m => m.CartPage)
-  },
-  {
-    path: 'cart',
-    loadComponent: () => import('./cart/cart.page').then( m => m.CartPage)
-  },
-  {
-    path: 'cart',
-    loadComponent: () => import('./cart/cart.page').then( m => m.CartPage)
   },
 
+  // Vue 5 : Produits (Personne 2)
+  {
+    path: 'vue5',
+    loadComponent: () =>
+      import('./vue5/vue5.page').then(m => m.Vue5Page),
+  },
 
-  // Vue 5 : Produits (travail Personne 2)
-  
+  // Catégorie 0 - Poissons
+  {
+    path: 'vue50',
+    loadComponent: () =>
+      import('./vue50/vue50.page').then(m => m.Vue50Page),
+  },
+
+  // Catégorie 1 - Coquillages / huîtres
+  {
+    path: 'vue51',
+    loadComponent: () =>
+      import('./vue51/vue51.page').then(m => m.Vue51Page),
+  },
+
+  // Catégorie 2 - Crustacés
+  {
+    path: 'vue52',
+    loadComponent: () =>
+      import('./vue52/vue52.page').then(m => m.Vue52Page),
+  },
+
+  // Promotions
+  {
+    path: 'vue53',
+    loadComponent: () =>
+      import('./vue53/vue53.page').then(m => m.Vue53Page),
+  },
+
+  // Page panier (Personne 3)
+  {
+    path: 'cart',
+    loadComponent: () =>
+      import('./cart/cart.page').then(m => m.CartPage),
+  },
 ];

@@ -1,11 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Bateau Thibault</ion-title>
+    <ion-title>Bateau Thibault : Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-
   <h2>Bienvenue sur l'application Bateau Thibault</h2>
 
   <ion-list>
@@ -22,7 +21,7 @@
 
     <!-- Vue 3 -->
     <ion-item button routerLink="/vue3">
-      <ion-label>Restaurants partenaires</ion-label>
+      <ion-label>Restaurants partenaires</ionabel>
     </ion-item>
 
     <!-- Vue 4 -->
@@ -30,11 +29,15 @@
       <ion-label>Idées de recettes</ion-label>
     </ion-item>
 
-    <!-- Vue 5 (Produits — Personne 2) -->
+    <!-- Vue 5 -->
     <ion-item button routerLink="/vue5">
       <ion-label>Commander des produits</ion-label>
     </ion-item>
 
-  </ion-list>
+    <!-- Panier -->
+    <ion-item button routerLink="/cart">
+      <ion-label>🛒 Voir le panier</ion-label>
+    </ion-item>
 
+  </ion-list>
 </ion-content>

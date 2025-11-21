@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/vue5"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Coquillages &amp; huîtres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Coquillages &amp; huîtres disponibles</h2>
+
+  <ion-list>
+
+    <!-- AJOUT DU CLIC -->
+    <ion-item *ngFor="let product of products"
+              (click)="onProductClick(product)">
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price }} € / {{ product.unit }}</p>
+
+        <p *ngIf="product.comments">{{ product.comments }}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

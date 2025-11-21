@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Catégories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h2>Choisissez une catégorie</h2>
+
+  <ion-list>
+
+    <ion-item button [routerLink]="['/vue50']">
+      <ion-label>Poissons</ion-label>
+    </ion-item>
+
+    <ion-item button [routerLink]="['/vue51']">
+      <ion-label>Crustacés</ion-label>
+    </ion-item>
+
+    <ion-item button [routerLink]="['/vue52']">
+      <ion-label>Coquillages</ion-label>
+    </ion-item>
+
+    <ion-item button [routerLink]="['/vue53']">
+      <ion-label>En promotion</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
