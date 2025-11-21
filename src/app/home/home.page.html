@@ -1,20 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Bateau Thibault</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <h2>Bienvenue sur l'application Bateau Thibault</h2>
+
+  <ion-list>
+
+    <!-- Vue 1 -->
+    <ion-item button routerLink="/vue1">
+      <ion-label>Le gérant</ion-label>
+    </ion-item>
+
+    <!-- Vue 2 -->
+    <ion-item button routerLink="/vue2">
+      <ion-label>Les bateaux</ion-label>
+    </ion-item>
+
+    <!-- Vue 3 -->
+    <ion-item button routerLink="/vue3">
+      <ion-label>Restaurants partenaires</ion-label>
+    </ion-item>
+
+    <!-- Vue 4 -->
+    <ion-item button routerLink="/vue4">
+      <ion-label>Idées de recettes</ion-label>
+    </ion-item>
+
+    <!-- Vue 5 (Produits — Personne 2) -->
+    <ion-item button routerLink="/vue5">
+      <ion-label>Commander des produits</ion-label>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>
