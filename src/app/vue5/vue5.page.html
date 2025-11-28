@@ -7,28 +7,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="categories-content">
 
-  <h2>Choisissez une catégorie</h2>
+  <div class="categories-wrapper">
+    <div class="categories-card">
 
-  <ion-list>
+      <h1>Choisissez une catégorie</h1>
+      <p class="intro">
+        Sélectionnez un type de produit pour voir les articles disponibles
+        du Bateau Thibault.
+      </p>
 
-    <ion-item button [routerLink]="['/vue50']">
-      <ion-label>Poissons</ion-label>
-    </ion-item>
+      <div class="category-list">
 
-    <ion-item button [routerLink]="['/vue51']">
-      <ion-label>Crustacés</ion-label>
-    </ion-item>
+        <ion-item button [routerLink]="['/vue50']" class="category-item">
+          <ion-label>Poissons</ion-label>
+        </ion-item>
 
-    <ion-item button [routerLink]="['/vue52']">
-      <ion-label>Coquillages</ion-label>
-    </ion-item>
+        <ion-item button [routerLink]="['/vue51']" class="category-item">
+          <ion-label>Crustacés</ion-label>
+        </ion-item>
 
-    <ion-item button [routerLink]="['/vue53']">
-      <ion-label>En promotion</ion-label>
-    </ion-item>
+        <ion-item button [routerLink]="['/vue52']" class="category-item">
+          <ion-label>Coquillages</ion-label>
+        </ion-item>
 
-  </ion-list>
+        <ion-item button [routerLink]="['/vue53']" class="category-item">
+          <ion-label>En promotion</ion-label>
+        </ion-item>
+
+      </div>
+
+    </div>
+  </div>
 
 </ion-content>

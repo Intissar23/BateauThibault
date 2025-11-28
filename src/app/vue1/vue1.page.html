@@ -1,26 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Le gérant</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="vue1-content">
+  <div class="gerant-wrapper">
+    <div class="gerant-card">
+      <h1>À propos du gérant</h1>
 
-<ion-content class="ion-padding">
-  <h2>À propos du gérant</h2>
+      <p>
+        Thibault est le gérant du bateau et de la boutique de vente directe. Il
+        travaille avec des pêcheurs locaux et sélectionne des produits de la mer
+        de haute qualité pour ses clients.
+      </p>
 
-  <p>
-    Thibault est le gérant du bateau et de la boutique de vente directe.
-    Il travaille avec des pêcheurs locaux et sélectionne des produits de la mer
-    de haute qualité pour ses clients.
-  </p>
+      <p>
+        Il s’occupe des commandes, des relations avec les restaurants
+        partenaires, et conseille les clients sur les meilleures façons de
+        préparer les produits.
+      </p>
 
-  <p>
-    Il s’occupe des commandes, des relations avec les restaurants partenaires,
-    et conseille les clients sur les meilleures façons de préparer les produits.
-  </p>
+      <div class="gerant-meta">
+        <span class="gerant-tag">Relation clients</span>
+        <span class="gerant-tag">Sélection des produits</span>
+        <span class="gerant-tag">Partenaires restaurants</span>
+      </div>
+    </div>
+  </div>
 
-  <!-- Image optionnelle -->
-  <!-- <img src="assets/images/gerant.jpg" alt="Gérant" style="width:100%;border-radius:12px;margin-top:20px;"> -->
+  <!-- 🛒 Bouton panier flottant style SHEIN -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="cart-fab" routerLink="/cart">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

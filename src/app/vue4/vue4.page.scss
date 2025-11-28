@@ -1,0 +1,83 @@
+/**************************************
+ *  FOND — dégradé bleu clair
+ **************************************/
+.recipes-content {
+  --background: linear-gradient(180deg, #d9e7ff 0%, #e8f0ff 40%, #ffffff 100%);
+  padding: 20px;
+}
+
+/**************************************
+ *  WRAPPER — largeur mobile
+ **************************************/
+.recipes-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/**************************************
+ *  CARTE PRINCIPALE
+ **************************************/
+.recipes-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 24px rgba(11, 48, 104, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  line-height: 1.6;
+}
+
+/**************************************
+ *  TITRES & TEXTES
+ **************************************/
+.recipes-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a2a66;
+  margin: 0;
+}
+
+.recipes-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #113a80;
+  margin: 0 0 6px;
+}
+
+.recipes-card .intro {
+  margin: 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+/**************************************
+ *  BLOCS RECETTES
+ **************************************/
+.recipe-block {
+  background: #f5f8ff;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border-left: 4px solid #3b82f6;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recipe-block p {
+  margin: 0;
+  font-size: 14px;
+  color: #334155;
+}
+
+/**************************************
+ *  CTA
+ **************************************/
+.recipes-cta {
+  margin-top: 10px;
+  --background: #2563eb;
+  --background-hover: #1d4ed8;
+  border-radius: 12px;
+}

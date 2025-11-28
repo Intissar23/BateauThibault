@@ -1,43 +1,110 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Bateau Thibault : Accueil</ion-title>
+
+    <!-- BOUTON PANIER À GAUCHE -->
+    <ion-buttons slot="start">
+      <ion-button routerLink="/cart" fill="clear">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- TITRE CENTRAL -->
+    <ion-title>Bateau Thibault</ion-title>
+
+    <!-- LOGO À DROITE -->
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <img src="assets/img/captain.png" class="header-avatar" />
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <h2>Bienvenue sur l'application Bateau Thibault</h2>
 
-  <ion-list>
+<ion-content class="home-content">
 
-    <!-- Vue 1 -->
-    <ion-item button routerLink="/vue1">
-      <ion-label>Le gérant</ion-label>
-    </ion-item>
+  <div class="home-wrapper">
 
-    <!-- Vue 2 -->
-    <ion-item button routerLink="/vue2">
-      <ion-label>Les bateaux</ion-label>
-    </ion-item>
+    <!-- SECTION TITRE / INTRO -->
+    <section class="hero">
+      <h1>Bienvenue</h1>
+      <p>
+        Gérez le gérant, les bateaux, les restaurants et les produits de la mer.
+      </p>
+    </section>
 
-    <!-- Vue 3 -->
-    <ion-item button routerLink="/vue3">
-      <ion-label>Restaurants partenaires</ionabel>
-    </ion-item>
+    <!-- SECTION RACCOURCIS -->
+    <section class="shortcuts">
+      <div class="card-grid">
 
-    <!-- Vue 4 -->
-    <ion-item button routerLink="/vue4">
-      <ion-label>Idées de recettes</ion-label>
-    </ion-item>
+        <!-- Gérant -->
+        <button class="shortcut-card" routerLink="/vue1">
+          <div class="shortcut-icon">
+            <img src="assets/img/gerant.png" alt="Gérant" />
+          </div>
+          <span>Gérant</span>
+        </button>
 
-    <!-- Vue 5 -->
-    <ion-item button routerLink="/vue5">
-      <ion-label>Commander des produits</ion-label>
-    </ion-item>
+        <!-- Bateaux -->
+        <button class="shortcut-card" routerLink="/vue2">
+          <div class="shortcut-icon">
+            <img src="assets/img/boat.png" alt="Bateaux" />
+          </div>
+          <span>Bateaux</span>
+        </button>
 
-    <!-- Panier -->
-    <ion-item button routerLink="/cart">
-      <ion-label>🛒 Voir le panier</ion-label>
-    </ion-item>
+        <!-- Restaurants -->
+        <button class="shortcut-card" routerLink="/vue3">
+          <div class="shortcut-icon">
+            <img src="assets/img/restaurant.png" alt="Restaurants" />
+          </div>
+          <span>Restaurants</span>
+        </button>
 
-  </ion-list>
+        <!-- Recettes -->
+        <button class="shortcut-card" routerLink="/vue4">
+          <div class="shortcut-icon">
+            <img src="assets/img/recipe.png" alt="Recettes" />
+          </div>
+          <span>Recettes</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- SECTION CTA PRODUITS -->
+    <section class="cta" routerLink="/vue5">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h2>Commander des produits</h2>
+          <p>
+            Accéder aux poissons, coquillages, crustacés et promotions.
+          </p>
+        </div>
+        <button class="cta-button">Ouvrir</button>
+      </div>
+    </section>
+
+     <!-- SECTION POINTS RELAIS (BAS DE PAGE) -->
+    <section class="highlight">
+      <div class="highlight-card">
+        <div class="highlight-info">
+          <h3>Points relais de livraison</h3>
+
+          <ion-list class="relay-list">
+            <ion-item *ngFor="let relay of relayPoints" lines="none">
+              <ion-label>
+                <h4>{{ relay.name }}</h4>
+                <p>{{ relay.address }}</p>
+                <p *ngIf="relay.hours">Horaires : {{ relay.hours }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
 </ion-content>

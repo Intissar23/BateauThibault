@@ -1,13 +1,350 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Mon Panier</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="clearCartAndGoHome()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">cart</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="cart-content">
+  <div class="cart-wrapper">
+    <div class="cart-card">
+      <h1>Produits sélectionnés</h1>
+
+      <p class="intro">
+        Touchez une ligne pour modifier la quantité.
+      </p>
+
+      <ion-list class="cart-list">
+        <ion-item
+          *ngFor="let item of cartItems"
+          class="cart-item"
+          (click)="openQtyModal(item)"
+        >
+          <ion-label>
+            <h2>{{ item.name }}</h2>
+            <p>
+              {{ item.price }} € × {{ item.qty }}
+              = <strong>{{ item.price * item.qty }} €</strong>
+            </p>
+          </ion-label>
+
+          <ion-button
+            size="small"
+            class="qty-btn plus"
+            (click)="add(item); $event.stopPropagation()"
+          >
+            +
+          </ion-button>
+
+          <ion-button
+            size="small"
+            class="qty-btn minus"
+            (click)="decrease(item); $event.stopPropagation()"
+          >
+            -
+          </ion-button>
+
+          <ion-button
+            size="small"
+            class="remove-btn"
+            (click)="remove(item); $event.stopPropagation()"
+          >
+            Supprimer
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+      <div class="delivery-summary" (click)="openDeliveryModal()">
+        <h3>Livraison & point relais</h3>
+
+        <p class="delivery-line">
+          <strong>Point relais :</strong>
+          <span>{{ selectedRelay?.name || 'Choisir un point relais' }}</span>
+        </p>
+
+        <p class="delivery-line">
+          <strong>Date de livraison :</strong>
+          <span>{{ formattedDeliveryDate }}</span>
+        </p>
+
+        <p class="delivery-line">
+          <strong>Total commande :</strong>
+          <span>{{ total }} €</span>
+        </p>
+
+        <p class="delivery-hint">
+          Appuyer pour modifier le point relais.
+        </p>
+      </div>
+
+      <h2 class="total">
+        Total : {{ total }} €
+      </h2>
+
+      <ion-button
+        expand="block"
+        class="validate-order-btn"
+        (click)="openConfirmModal()"
+        [disabled]="!cartItems.length || !selectedRelay || !deliveryDate"
+      >
+        Valider la commande
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        class="clear-cart-btn"
+        color="danger"
+        (click)="clearCart()"
+      >
+        Vider le panier
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-modal
+    [isOpen]="isQtyModalOpen"
+    (didDismiss)="closeQtyModal()"
+  >
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Quantité</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeQtyModal()">Fermer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <h2 *ngIf="selectedItem">{{ selectedItem.name }}</h2>
+
+      <p *ngIf="selectedItem">
+        Prix unitaire : {{ selectedItem.price }} €
+      </p>
+
+      <p>Quantité :</p>
+
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <ion-button size="small" (click)="changeQty(-1)">-</ion-button>
+        <strong>{{ selectedQty }}</strong>
+        <ion-button size="small" (click)="changeQty(1)">+</ion-button>
+      </div>
+
+      <p *ngIf="selectedItem">
+        Sous-total : <strong>{{ selectedItem.price * selectedQty }} €</strong>
+      </p>
+
+      <ion-button
+        expand="block"
+        (click)="confirmQty()"
+      >
+        Valider
+      </ion-button>
+    </ion-content>
+  </ion-modal>
+
+  <div
+    *ngIf="isDeliveryModalOpen"
+    style="
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    "
+    (click)="closeDeliveryModal()"
+  >
+    <div
+      style="
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 16px;
+        width: 90%;
+        max-width: 420px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 12px 30px rgba(15,23,42,0.35);
+      "
+      (click)="$event.stopPropagation()"
+    >
+      <div
+        style="
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+        "
+      >
+        <h2 style="margin:0; font-size:18px; font-weight:700; color:#111827;">
+          Choisir un point relais
+        </h2>
+        <button
+          (click)="closeDeliveryModal()"
+          style="
+            border:none;
+            background:transparent;
+            font-size:20px;
+            cursor:pointer;
+          "
+        >
+          ✕
+        </button>
+      </div>
+
+      <div
+        style="
+          overflow-y:auto;
+          padding-right:4px;
+          margin-bottom: 12px;
+        "
+      >
+        <div
+          *ngFor="let relay of relayPoints || []"
+          (click)="selectRelay(relay)"
+          style="
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9fafb;
+            color: #111827;
+            cursor: pointer;
+          "
+        >
+          <div>
+            <div style="font-weight: 600; font-size: 15px;">
+              {{ relay?.name }}
+            </div>
+            <div style="font-size: 13px; color: #4b5563;">
+              {{ relay?.address }}
+            </div>
+          </div>
+          <div
+            *ngIf="selectedRelay?.id === relay?.id"
+            style="font-size: 20px; margin-left: 8px;"
+          >
+            ✔
+          </div>
+        </div>
+      </div>
+
+      <button
+        (click)="confirmRelay()"
+        [disabled]="!selectedRelay"
+        [style.opacity]="selectedRelay ? '1' : '0.5'"
+        style="
+          width: 100%;
+          padding: 10px 0;
+          border-radius: 999px;
+          border: none;
+          font-weight: 600;
+          font-size: 15px;
+          cursor: pointer;
+          background: #2563eb;
+          color: #ffffff;
+        "
+      >
+        Valider le point relais
+      </button>
+    </div>
+  </div>
+
+  <ion-modal
+    [isOpen]="isConfirmModalOpen"
+    (didDismiss)="closeConfirmModal()"
+  >
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Confirmation de commande</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeConfirmModal()">Fermer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <div style="padding: 12px;">
+
+        <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+          Confirmer la commande ?
+        </h2>
+
+        <p style="font-size: 16px; margin-bottom: 8px;">
+          <strong>Total :</strong> {{ total }} €
+        </p>
+
+        <div *ngIf="selectedRelay" style="margin-bottom: 10px;">
+          <p style="margin: 0; font-size: 15px;">
+            <strong>Point relais :</strong> {{ selectedRelay?.name }}
+          </p>
+          <p style="margin: 0; font-size: 14px; color:#444;">
+            <strong>Adresse :</strong> {{ selectedRelay?.address }}
+          </p>
+        </div>
+
+        <p *ngIf="deliveryDate" style="margin: 0 0 16px 0; font-size: 15px;">
+          <strong>Date de livraison :</strong> {{ formattedDeliveryDate }}
+        </p>
+
+        <ion-button
+          expand="block"
+          color="primary"
+          (click)="confirmOrder()"
+          style="margin-top: 20px;"
+        >
+          Confirmer la commande
+        </ion-button>
+
+      </div>
+    </ion-content>
+  </ion-modal>
+
+  <div
+    *ngIf="showConfirmationMessage"
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div
+      style="
+        background: white;
+        padding: 20px 30px;
+        border-radius: 16px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #111;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        text-align: center;
+      "
+    >
+      ✅ Commande confirmée !
+    </div>
+  </div>
 </ion-content>

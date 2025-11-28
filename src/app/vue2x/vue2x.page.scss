@@ -1,0 +1,67 @@
+/**************************************
+ *  FOND — dégradé bleu doux
+ **************************************/
+.boat-details-content {
+  --background: linear-gradient(180deg, #d9e7ff 0%, #e8f0ff 40%, #ffffff 100%);
+  padding: 20px;
+}
+
+/**************************************
+ *  WRAPPER — largeur type mobile
+ **************************************/
+.boat-details-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/**************************************
+ *  CARTE DÉTAILS
+ **************************************/
+.boat-details-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 26px rgba(11, 48, 104, 0.15);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/**************************************
+ *  TITRES & TEXTES
+ **************************************/
+.boat-details-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a2a66;
+  margin: 0;
+}
+
+.boat-details-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #113a80;
+  margin: 8px 0 4px;
+}
+
+.boat-details-card p {
+  margin: 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+/**************************************
+ *  LISTE TECHNIQUE
+ **************************************/
+.boat-details-card ul {
+  margin: 0 0 4px 20px;
+  padding: 0;
+}
+
+.boat-details-card li {
+  font-size: 14px;
+  color: #243b63;
+  margin-bottom: 4px;
+}

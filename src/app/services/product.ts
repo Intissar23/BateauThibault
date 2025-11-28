@@ -1,19 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  // On pointe maintenant vers le fichier local dans assets
   private apiUrl = 'assets/data/products.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private toastService: ToastService   // ✅ injection du toast
+  ) {}
 
-  // Récupérer toute la liste des produits depuis le bouchon JSON local
   getAllProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.error("Erreur lors du chargement des produits :", err);
+
+        // 🔥 Toast utilisateur (exigence du sujet)
+        this.toastService.showError(
+          "Impossible de charger les produits pour le moment."
+        );
+
+        return throwError(() => err);
+      })
+    );
   }
 }

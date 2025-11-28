@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+
 import {
   IonHeader,
   IonToolbar,
@@ -9,10 +11,13 @@ import {
   IonContent,
   IonList,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonButton,
+  IonIcon
 } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+
 import { ProductService } from '../services/product';
+import { CartService } from '../services/cart';
 
 @Component({
   selector: 'app-vue52',
@@ -30,31 +35,48 @@ import { ProductService } from '../services/product';
     IonContent,
     IonList,
     IonItem,
-    IonLabel
+    IonLabel,
+    IonButton,
+    IonIcon
   ]
 })
 export class Vue52Page implements OnInit {
 
   products: any[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    public cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe({
       next: (data) => {
-        // Catégorie 2 = Crustacés
+        // Catégorie 2 = Coquillages / Huîtres
         this.products = data.filter((p: any) => p.category === 2);
-        console.log('Catégorie 2 (Crustacés) :', this.products);
+        console.log("Catégorie 2 (Coquillages & Huîtres) :", this.products);
       },
       error: (err) => {
-        console.error('Erreur API :', err);
+        console.error("Erreur API :", err);
       }
     });
   }
 
-  // ➜ Fonction pour gérer le clic sur un produit
-  onProductClick(product: any) {
-    console.log('Produit cliqué (Vue52) :', product);
-    // Plus tard : this.cartService.toggleItem(product);
+  /** Produit déjà dans le panier ? */
+  isInCart(product: any): boolean {
+    return this.cartService.isInCart(product);
+  }
+
+  /** Toggle ajouter/retirer */
+  toggleProduct(product: any) {
+    this.cartService.toggleProduct(product);
+    console.log("Panier après toggle :", this.cartService.getCart());
+  }
+
+  /** Logo HOME : vider le panier + revenir à l’accueil */
+  goHomeAndClear() {
+    this.cartService.clearCart();
+    this.router.navigate(['/home']);
   }
 }

@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonButtons,
   IonBackButton,
+  IonFab,
+  IonFabButton,
+  IonIcon,
   IonContent
 } from '@ionic/angular/standalone';
 
@@ -21,6 +25,9 @@ import {
     IonTitle,
     IonButtons,
     IonBackButton,
+    IonFab,
+    IonFabButton,
+    IonIcon,
     IonContent
   ]
 })

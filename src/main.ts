@@ -5,11 +5,18 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { addIcons } from 'ionicons';
+import { cartOutline } from 'ionicons/icons';
+
+addIcons({ cartOutline });
 
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideIonicAngular(),
+      provideIonicAngular({
+      swipeBackEnabled: true,   // ✅ swipe-back activé
+      mode: 'md'                // optionnel
+    }),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideHttpClient(),
   ],

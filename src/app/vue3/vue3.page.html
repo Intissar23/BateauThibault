@@ -7,46 +7,45 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="restaurants-content">
 
-  <h2>Restaurants partenaires</h2>
+  <div class="restaurants-wrapper">
+    <div class="restaurants-card">
 
-  <p>
-    Voici une sélection de restaurants qui travaillent avec le Bateau Thibault
-    et utilisent ses produits frais issus de la pêche locale.
-  </p>
+      <h1>Restaurants partenaires</h1>
 
-  <ion-list>
+      <p class="intro">
+        Voici une sélection d'établissements qui travaillent avec le Bateau Thibault
+        et utilisent ses produits frais issus de la pêche locale.
+      </p>
 
-    <ion-item>
-      <ion-label>
+      <!-- LISTE -->
+      <div class="restaurant-block">
         <h2>Restaurant La Marine</h2>
-        <p>Spécialité : Poissons & fruits de mer</p>
-        <p>Adresse : 12 rue du Port, 14000 Caen</p>
-      </ion-label>
-    </ion-item>
+        <p><strong>Spécialité :</strong> Poissons & fruits de mer</p>
+        <p><strong>Adresse :</strong> 12 rue du Port, 14000 Caen</p>
+      </div>
 
-    <ion-item>
-      <ion-label>
+      <div class="restaurant-block">
         <h2>Le Quai Gourmand</h2>
-        <p>Spécialité : Cuisine traditionnelle</p>
-        <p>Adresse : Quai des Marins, 50500 Saint-Vaast</p>
-      </ion-label>
-    </ion-item>
+        <p><strong>Spécialité :</strong> Cuisine traditionnelle</p>
+        <p><strong>Adresse :</strong> Quai des Marins, 50500 Saint-Vaast</p>
+      </div>
 
-    <ion-item>
-      <ion-label>
+      <div class="restaurant-block">
         <h2>L’Océan Bleu</h2>
-        <p>Spécialité : Coquillages & crustacés</p>
-        <p>Adresse : 8 avenue de la Plage, 14400 Arromanches</p>
-      </ion-label>
-    </ion-item>
+        <p><strong>Spécialité :</strong> Coquillages & crustacés</p>
+        <p><strong>Adresse :</strong> 8 avenue de la Plage, 14400 Arromanches</p>
+      </div>
 
-  </ion-list>
+      <!-- CTA -->
+      <div class="cta-wrapper">
+        <ion-button expand="block" routerLink="/vue3x" class="restaurant-cta">
+          Voir le détail d’un restaurant
+        </ion-button>
+      </div>
 
-  <!-- Bouton vers la vue de détail d'un restaurant -->
-  <ion-button expand="block" routerLink="/vue3x">
-    Voir le détail d’un restaurant
-  </ion-button>
+    </div>
+  </div>
 
 </ion-content>

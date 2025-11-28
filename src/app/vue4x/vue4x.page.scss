@@ -1,0 +1,72 @@
+/**************************************
+ *  FOND — Dégradé bleu clair
+ **************************************/
+.recipe-detail-content {
+  --background: linear-gradient(180deg, #d9e7ff 0%, #e8f0ff 40%, #ffffff 100%);
+  padding: 20px;
+}
+
+/**************************************
+ *  WRAPPER — largeur max mobile
+ **************************************/
+.recipe-detail-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/**************************************
+ *  CARTE PRINCIPALE
+ **************************************/
+.recipe-detail-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 24px rgba(11, 48, 104, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  line-height: 1.6;
+}
+
+/**************************************
+ *  TITRES
+ **************************************/
+.recipe-detail-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a2a66;
+  margin: 0;
+}
+
+.recipe-detail-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #113a80;
+  margin: 6px 0 0;
+}
+
+/**************************************
+ *  LISTES
+ **************************************/
+.recipe-detail-card ul,
+.recipe-detail-card ol {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.recipe-detail-card li {
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+/**************************************
+ *  TEXTE FINAL
+ **************************************/
+.recipe-detail-card .info {
+  font-size: 15px;
+  color: #475569;
+  margin: 0;
+}

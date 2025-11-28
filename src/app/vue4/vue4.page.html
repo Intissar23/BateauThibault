@@ -7,48 +7,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="recipes-content">
 
-  <h2>Idées de recettes avec les produits du Bateau Thibault</h2>
+  <div class="recipes-wrapper">
+    <div class="recipes-card">
 
-  <p>
-    Voici quelques idées simples de recettes à réaliser avec les poissons,
-    coquillages et crustacés proposés par le Bateau Thibault.
-  </p>
+      <h1>Idées de recettes</h1>
 
-  <ion-list>
+      <p class="intro">
+        Voici quelques idées simples et savoureuses à réaliser avec les poissons,
+        coquillages et crustacés proposés par le Bateau Thibault.
+      </p>
 
-    <ion-item>
-      <ion-label>
+      <!-- Recette 1 -->
+      <div class="recipe-block">
         <h2>Filet de bar rôti au four</h2>
-        <p>Ingrédients : filet de bar, huile d’olive, citron, herbes, sel, poivre.</p>
-        <p>Préparation : assaisonner le filet, enfourner 12 à 15 minutes à 180°C.</p>
-      </ion-label>
-    </ion-item>
+        <p><strong>Ingrédients :</strong> filet de bar, huile d’olive, citron, herbes, sel, poivre.</p>
+        <p><strong>Préparation :</strong> assaisonner le filet, enfourner 12 à 15 minutes à 180°C.</p>
+      </div>
 
-    <ion-item>
-      <ion-label>
+      <!-- Recette 2 -->
+      <div class="recipe-block">
         <h2>Moules marinières</h2>
-        <p>Ingrédients : moules, échalotes, vin blanc, persil, crème (facultatif).</p>
-        <p>Préparation : faire revenir les échalotes, ajouter les moules et le vin
-           blanc, couvrir jusqu’à ouverture des coquilles.</p>
-      </ion-label>
-    </ion-item>
+        <p><strong>Ingrédients :</strong> moules, échalotes, vin blanc, persil, crème (facultatif).</p>
+        <p><strong>Préparation :</strong> faire revenir les échalotes, ajouter les moules et le vin blanc,
+          puis couvrir jusqu’à ouverture des coquilles.</p>
+      </div>
 
-    <ion-item>
-      <ion-label>
+      <!-- Recette 3 -->
+      <div class="recipe-block">
         <h2>Huîtres gratinées</h2>
-        <p>Ingrédients : huîtres, beurre, ail, persil, chapelure.</p>
-        <p>Préparation : déposer un mélange beurre–ail–persil sur chaque huître,
-           saupoudrer de chapelure et passer quelques minutes au grill.</p>
-      </ion-label>
-    </ion-item>
+        <p><strong>Ingrédients :</strong> huîtres, beurre, ail, persil, chapelure.</p>
+        <p><strong>Préparation :</strong> déposer un mélange beurre–ail–persil sur chaque huître,
+          saupoudrer de chapelure et passer quelques minutes au grill.</p>
+      </div>
 
-  </ion-list>
+      <!-- CTA -->
+      <div class="cta-wrapper">
+        <ion-button expand="block" routerLink="/vue4x" class="recipes-cta">
+          Voir une recette détaillée
+        </ion-button>
+      </div>
 
-  <!-- Bouton vers la recette détaillée -->
-  <ion-button expand="block" routerLink="/vue4x">
-    Voir une recette détaillée
-  </ion-button>
+    </div>
+  </div>
 
 </ion-content>

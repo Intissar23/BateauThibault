@@ -1,0 +1,111 @@
+/**************************************
+ *  FOND — dégradé bleu clair
+ **************************************/
+.products-content {
+  --background: linear-gradient(180deg, #d9e7ff 0%, #e8f0ff 40%, #ffffff 100%);
+  padding: 20px;
+}
+
+/**************************************
+ *  WRAPPER — largeur max mobile
+ **************************************/
+.products-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/**************************************
+ *  CARTE PRINCIPALE
+ **************************************/
+.products-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 24px rgba(11, 48, 104, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.products-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a2a66;
+  margin: 0;
+}
+
+.products-card .intro {
+  margin: 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+/**************************************
+ *  LISTE DES PRODUITS
+ **************************************/
+.product-list {
+  background: transparent;
+  padding: 0;
+}
+
+.product-item {
+  --background: #f5f8ff;
+  --background-hover: #e4edff;
+  --border-radius: 14px;
+  --padding-start: 14px;
+  --inner-padding-end: 10px;
+  --min-height: 64px;
+
+  margin-bottom: 10px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.product-item h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #113a80;
+  margin: 0 0 2px;
+}
+
+.product-item p {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/**************************************
+ *  BOUTON AJOUTER — BLEU PREMIUM
+ **************************************/
+.add-btn {
+  --background: #2563eb;
+  --background-hover: #1e4fd3;
+  --color: white;
+
+  --border-radius: 18px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+}
+@media (orientation: landscape) {
+  .products-wrapper {
+    max-width: 720px;
+  }
+
+  .products-card {
+    padding: 18px;
+  }
+
+  .product-item h2 {
+    font-size: 15px;
+  }
+
+  .product-item p {
+    font-size: 12px;
+  }
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+
 import {
   IonHeader,
   IonToolbar,
@@ -9,10 +11,13 @@ import {
   IonContent,
   IonList,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonButton,
+  IonIcon
 } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+
 import { ProductService } from '../services/product';
+import { CartService } from '../services/cart';
 
 @Component({
   selector: 'app-vue50',
@@ -30,34 +35,51 @@ import { ProductService } from '../services/product';
     IonContent,
     IonList,
     IonItem,
-    IonLabel
+    IonLabel,
+    IonButton,
+    IonIcon
   ]
 })
 export class Vue50Page implements OnInit {
 
   products: any[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    public cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe({
       next: (data) => {
-        console.log("TOUS LES PRODUITS :", data);
+        console.log('TOUS LES PRODUITS :', data);
 
         // Filtrer par category = 0 (Poissons)
         this.products = data.filter((p: any) => p.category === 0);
 
-        console.log("Catégorie 0 (Poissons) :", this.products);
+        console.log('Catégorie 0 (Poissons) :', this.products);
       },
       error: (err) => {
-        console.error("Erreur API :", err);
+        console.error('Erreur API :', err);
       }
     });
   }
 
-  // ➜ Fonction ajoutée pour gérer le clic sur un produit
-  onProductClick(product: any) {
-    console.log("Produit cliqué (Vue50) :", product);
-    // Ici plus tard : this.cartService.toggleItem(product);
+  /** Vrai si le produit est déjà dans le panier */
+  isInCart(product: any): boolean {
+    return this.cartService.isInCart(product);
+  }
+
+  /** Ajoute ou enlève le produit du panier selon son état */
+  toggleProduct(product: any) {
+    this.cartService.toggleProduct(product);
+    console.log('Panier après toggle :', this.cartService.getCart());
+  }
+
+  /** Bouton Home dans le header : vide le panier et retourne à l’accueil */
+  goHomeAndClear() {
+    this.cartService.clearCart();
+    this.router.navigate(['/home']);
   }
 }

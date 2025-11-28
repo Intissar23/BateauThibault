@@ -7,42 +7,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<!-- 🌊 Ajout de classes pour activer le design -->
+<ion-content class="vue2-content">
 
-  <h2>Le bateau de pêche</h2>
+  <div class="boat-wrapper">
+    <div class="boat-card">
 
-  <p>
-    Le Bateau Thibault est un bateau de pêche côtière utilisé pour la capture
-    de poissons, coquillages et crustacés. Les produits sont ensuite vendus
-    directement aux particuliers et aux restaurants partenaires.
-  </p>
+      <h1>Le bateau de pêche</h1>
 
-  <h3>Caractéristiques principales</h3>
+      <p>
+        Le Bateau Thibault est un bateau de pêche côtière utilisé pour la capture
+        de poissons, coquillages et crustacés. Les produits sont ensuite vendus
+        directement aux particuliers et aux restaurants partenaires.
+      </p>
 
-  <ul>
-    <li>Type : Bateau de pêche côtière</li>
-    <li>Longueur : environ 10 à 12 mètres</li>
-    <li>Équipage : 2 à 3 marins</li>
-    <li>Zone de pêche : littoral local</li>
-    <li>Port d’attache : (ajouter votre information)</li>
-  </ul>
+      <h2>Caractéristiques principales</h2>
 
-  <h3>Rôle dans le projet</h3>
+      <ul>
+        <li>Type : Bateau de pêche côtière</li>
+        <li>Longueur : environ 10 à 12 mètres</li>
+        <li>Équipage : 2 à 3 marins</li>
+        <li>Zone de pêche : littoral local</li>
+        <li>Port d’attache : (ajouter votre information)</li>
+      </ul>
 
-  <p>
-    Le bateau est au centre de l’activité : il assure la fraîcheur des produits,
-    le respect de la saisonnalité et la qualité de la pêche artisanale.
-  </p>
+      <h2>Rôle dans le projet</h2>
 
-  <!-- Bouton vers la vue de détail -->
-  <ion-button expand="block" routerLink="/vue2x">
-    Voir plus de détails
-  </ion-button>
+      <p>
+        Le bateau est au centre de l’activité : il assure la fraîcheur des produits,
+        le respect de la saisonnalité et la qualité de la pêche artisanale.
+      </p>
 
-  <!-- Image optionnelle -->
-  <!--
-  <img src="assets/images/bateau.jpg" alt="Bateau Thibault" 
-       style="width:100%;border-radius:12px;margin-top:20px;">
-  -->
+      <!-- Bouton CTA -->
+      <div class="cta-wrapper">
+        <ion-button expand="block" routerLink="/vue2x" class="boat-cta">
+          Voir plus de détails
+        </ion-button>
+      </div>
+
+      <!-- Image Optionnelle -->
+      <!--
+      <img src="assets/images/bateau.jpg"
+           alt="Bateau Thibault"
+           class="boat-image">
+      -->
+
+    </div>
+  </div>
 
 </ion-content>

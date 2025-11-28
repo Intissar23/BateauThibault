@@ -1,0 +1,76 @@
+/* === FOND GLOBAL AVEC DÉGRADÉ BLEU === */
+.vue2-content {
+  --background: linear-gradient(180deg, #d9e7ff 0%, #e8f0ff 40%, #ffffff 100%);
+  padding: 20px;
+}
+
+/* === WRAPPER GLOBAL — centre et limite la largeur === */
+.boat-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* === CARTE PRINCIPALE === */
+.boat-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(10, 42, 102, 0.15);
+  line-height: 1.55;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === TITRES === */
+.boat-card h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0a2a66;
+  margin: 0;
+}
+
+.boat-card h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #113a80;
+  margin-top: 10px;
+}
+
+/* === LISTE DES CARACTÉRISTIQUES === */
+.boat-card ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.boat-card li {
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #243b63;
+}
+
+/* === BOUTON CTA === */
+.boat-cta {
+  --background: #1e50e8;
+  --background-activated: #1740c0;
+  --border-radius: 14px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Wrapper pour centrer et espacer */
+.cta-wrapper {
+  display: flex;
+  margin-top: 10px;
+}
+
+/* === IMAGE (si utilisée) === */
+.boat-image {
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}

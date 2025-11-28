@@ -1,27 +1,69 @@
 <ion-header>
   <ion-toolbar>
+
+    <!-- Retour vers Vue5 -->
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/vue5"></ion-back-button>
     </ion-buttons>
-    <ion-title>Coquillages &amp; huîtres</ion-title>
+
+    <ion-title>Crustacés</ion-title>
+
+    <!-- 🔹 Logos Home + Panier -->
+    <ion-buttons slot="end">
+
+      <!-- HOME = vider le panier + retour accueil -->
+      <ion-button (click)="goHomeAndClear()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+
+      <!-- PANIER -->
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h2>Coquillages &amp; huîtres disponibles</h2>
+<ion-content class="products-content">
 
-  <ion-list>
+  <div class="products-wrapper">
+    <div class="products-card">
 
-    <!-- AJOUT DU CLIC -->
-    <ion-item *ngFor="let product of products"
-              (click)="onProductClick(product)">
-      <ion-label>
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.price }} € / {{ product.unit }}</p>
+      <h1>Crustacés disponibles</h1>
 
-        <p *ngIf="product.comments">{{ product.comments }}</p>
-      </ion-label>
-    </ion-item>
+      <p class="intro">
+        Retrouvez ici une sélection de crustacés frais proposés par le Bateau Thibault.
+      </p>
 
-  </ion-list>
+      <ion-list class="product-list">
+
+        <ion-item
+          *ngFor="let product of products"
+          class="product-item"
+          (click)="toggleProduct(product)"
+        >
+          <ion-label>
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.price }} € / {{ product.unit }}</p>
+            <p *ngIf="product.comments">{{ product.comments }}</p>
+          </ion-label>
+
+          <!-- 🔄 Bouton Toggle : Ajouter / Retirer -->
+          <ion-button
+            size="small"
+            [ngClass]="isInCart(product) ? 'remove-btn' : 'add-btn'"
+            (click)="toggleProduct(product); $event.stopPropagation()"
+          >
+            {{ isInCart(product) ? 'Retirer' : 'Ajouter' }}
+          </ion-button>
+
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+  </div>
+
 </ion-content>

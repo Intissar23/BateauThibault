@@ -1,0 +1,74 @@
+/**************************************
+ *  FOND — dégradé bleu comme les autres
+ **************************************/
+.restaurant-details-content {
+  --background: linear-gradient(180deg, #d9e7ff 0%, #e8f0ff 40%, #ffffff 100%);
+  padding: 20px;
+}
+
+/**************************************
+ *  WRAPPER — largeur max mobile
+ **************************************/
+.restaurant-details-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/**************************************
+ *  CARTE PRINCIPALE
+ **************************************/
+.restaurant-details-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 24px rgba(11, 48, 104, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  line-height: 1.6;
+}
+
+/**************************************
+ *  TITRES & TEXTES
+ **************************************/
+.restaurant-details-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a2a66;
+  margin: 0;
+}
+
+.restaurant-details-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #113a80;
+  margin: 6px 0 0;
+}
+
+.restaurant-details-card .intro {
+  margin: 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+.restaurant-details-card p {
+  margin: 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+/**************************************
+ *  LISTE D'INFOS
+ **************************************/
+.restaurant-details-card ul {
+  margin: 4px 0 0 20px;
+  padding: 0;
+}
+
+.restaurant-details-card li {
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 4px;
+}
