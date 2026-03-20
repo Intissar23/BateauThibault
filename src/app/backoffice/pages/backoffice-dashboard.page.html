@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard KPI</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/backoffice/products">Produits</ion-button>
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="dash-content">
+  <div class="dash-wrapper">
+    <div class="filters">
+      <ion-item>
+        <ion-label>Periode</ion-label>
+        <ion-select [(ngModel)]="period" (ionChange)="refresh()">
+          <ion-select-option value="daily">Journalier</ion-select-option>
+          <ion-select-option value="yearly">Annuel</ion-select-option>
+          <ion-select-option value="quarterly">Trimestriel</ion-select-option>
+          <ion-select-option value="monthly">Mensuel</ion-select-option>
+          <ion-select-option value="weekly">Hebdomadaire</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Categorie</ion-label>
+        <ion-select [(ngModel)]="category" (ionChange)="refresh()">
+          <ion-select-option value="all">Toutes</ion-select-option>
+          <ion-select-option value="fish">Poissons</ion-select-option>
+          <ion-select-option value="seafood">Fruits de mer</ion-select-option>
+          <ion-select-option value="crustacean">Crustaces</ion-select-option>
+          <ion-select-option value="promotion">Promotions</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h2>Chiffre d'affaire</h2>
+        <p *ngIf="revenue; else na">{{ revenue.amount | number:'1.2-2' }} EUR</p>
+      </div>
+
+      <div class="card">
+        <h2>Marge</h2>
+        <p *ngIf="marginTax; else na">{{ marginTax.margin | number:'1.2-2' }} EUR</p>
+      </div>
+
+      <div class="card">
+        <h2>Impot prev.</h2>
+        <p *ngIf="marginTax; else na">{{ marginTax.tax | number:'1.2-2' }} EUR</p>
+      </div>
+
+      <div class="card">
+        <h2>Achats (annuel)</h2>
+        <p *ngIf="marginTax; else na">{{ marginTax.purchaseCost | number:'1.2-2' }} EUR</p>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <h2>Alertes trimestrielles</h2>
+      <div class="alert-line" *ngFor="let a of alerts" [class.danger]="a.level === 'danger'" [class.success]="a.level === 'success'" [class.bonus]="a.level === 'bonus'">
+        <strong>{{ a.quarter }}</strong> - {{ a.message }} ({{ a.margin | number:'1.2-2' }} EUR)
+        <span *ngIf="a.confetti" class="confetti-tag">Confetti</span>
+      </div>
+      <p *ngIf="loading">Chargement...</p>
+    </div>
+  </div>
+
+  <ng-template #na>
+    <span>n/a</span>
+  </ng-template>
+</ion-content>

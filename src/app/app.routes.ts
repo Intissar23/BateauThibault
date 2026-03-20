@@ -1,6 +1,27 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  // Back-office login
+  {
+    path: 'backoffice/login',
+    loadComponent: () =>
+      import('./backoffice/pages/backoffice-login.page').then(m => m.BackofficeLoginPage),
+  },
+
+  // Back-office produits
+  {
+    path: 'backoffice/products',
+    loadComponent: () =>
+      import('./backoffice/pages/backoffice-products.page').then(m => m.BackofficeProductsPage),
+  },
+
+  // Back-office dashboard
+  {
+    path: 'backoffice/dashboard',
+    loadComponent: () =>
+      import('./backoffice/pages/backoffice-dashboard.page').then(m => m.BackofficeDashboardPage),
+  },
+
   // Accueil
   {
     path: 'home',
@@ -69,6 +90,13 @@ export const routes: Routes = [
     path: 'vue5',
     loadComponent: () =>
       import('./vue5/vue5.page').then(m => m.Vue5Page),
+  },
+
+  // Détail d'un produit depuis JSON
+  {
+    path: 'product-details/:id',
+    loadComponent: () =>
+      import('./product-details/product-details.page').then(m => m.ProductDetailsPage),
   },
 
   // Catégorie 0 - Poissons

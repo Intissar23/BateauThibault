@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ToastService } from './toast.service';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class ProductService {
     private toastService: ToastService   // ✅ injection du toast
   ) {}
 
-  getAllProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+  getProductsFromJson(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl).pipe(
       catchError(err => {
         console.error("Erreur lors du chargement des produits :", err);
 
@@ -28,5 +29,9 @@ export class ProductService {
         return throwError(() => err);
       })
     );
+  }
+
+  getAllProducts(): Observable<Product[]> {
+    return this.getProductsFromJson();
   }
 }

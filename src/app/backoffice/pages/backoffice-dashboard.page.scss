@@ -1,0 +1,77 @@
+.dash-content {
+  --background: #f5f8fc;
+}
+
+.dash-wrapper {
+  padding: 16px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.cards {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.alert-box {
+  margin-top: 14px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.alert-line {
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.confetti-tag {
+  margin-left: 8px;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ffe7a8;
+  color: #7a5600;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.alert-line.danger {
+  background: #ffeceb;
+  color: #b42318;
+}
+
+.alert-line.success {
+  background: #ebf9f0;
+  color: #067647;
+}
+
+.alert-line.bonus {
+  background: #e9f3ff;
+  color: #175cd3;
+}

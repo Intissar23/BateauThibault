@@ -1,0 +1,28 @@
+.product-details-content {
+  --background: #f3f6f9;
+}
+
+.product-details-wrapper {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.product-details-card {
+  width: min(640px, 100%);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+.product-details-card h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.product-details-card p {
+  margin: 8px 0;
+}

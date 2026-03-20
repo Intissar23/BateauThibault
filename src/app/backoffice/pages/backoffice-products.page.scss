@@ -1,0 +1,67 @@
+.bo-content {
+  --background: #f6f8fb;
+}
+
+.container {
+  padding: 16px;
+}
+
+.toolbar-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 18px;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #d7deea;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.product-table th {
+  background: #eaf1fb;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #bcc7db;
+  border-radius: 4px;
+}
+
+select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #bcc7db;
+  border-radius: 4px;
+  background: #fff;
+}
+
+button {
+  border: 1px solid #1d5cb7;
+  background: #2d73d8;
+  color: #fff;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.invalid-input {
+  border-color: #d93025;
+  background: #ffeceb;
+}
+
+.error-row td {
+  color: #b42318;
+  background: #fff2f1;
+  font-size: 13px;
+}

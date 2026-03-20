@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/vue5"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details produit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="product-details-content">
+  <div class="product-details-wrapper">
+    <div class="product-details-card" *ngIf="produit; else notFound">
+      <h1>Page d'affichage du produit</h1>
+      <p><strong>Id :</strong> {{ produit.id }}</p>
+      <p><strong>Nom :</strong> {{ produit.name }}</p>
+      <p><strong>Prix :</strong> {{ produit.price }} EUR</p>
+      <p><strong>Unite :</strong> {{ produit.unit }}</p>
+      <p><strong>Commentaire :</strong> {{ produit.comments || 'Aucun' }}</p>
+    </div>
+
+    <ng-template #notFound>
+      <div class="product-details-card">
+        <h1>Produit introuvable</h1>
+        <p>Verifiez l'identifiant transmis dans l'URL.</p>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Back-Office Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <div class="login-wrapper">
+    <form class="login-card" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <h1>Connexion gerant</h1>
+
+      <ion-item>
+        <ion-label position="stacked">Utilisateur</ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+
+      <div class="actions">
+        <ion-button type="submit" [disabled]="loading">
+          {{ loading ? 'Connexion...' : 'Se connecter' }}
+        </ion-button>
+        <ion-button fill="clear" routerLink="/home">Retour accueil</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

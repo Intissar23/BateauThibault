@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Back-Office Produits</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/backoffice/dashboard">Dashboard</ion-button>
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bo-content">
+  <div class="container">
+    <div class="toolbar-row">
+      <ion-button (click)="sendAll()" [disabled]="loading">
+        {{ loading ? 'Envoi...' : 'Envoyer donnees' }}
+      </ion-button>
+      <ion-button fill="clear" routerLink="/home">Retour accueil</ion-button>
+    </div>
+
+    <ion-text color="danger" *ngIf="globalError"><p>{{ globalError }}</p></ion-text>
+    <ion-text color="success" *ngIf="infoMessage"><p>{{ infoMessage }}</p></ion-text>
+
+    <section>
+      <h2>Poissons</h2>
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Prix promo</th>
+            <th>% promo</th>
+            <th>Stock</th>
+            <th>Vendus</th>
+            <th>Commentaires</th>
+            <th>Type</th>
+            <th>Quantite</th>
+            <th>Prix unite</th>
+            <th>Nouveau %</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of fishProducts">
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | number:'1.2-2' }}</td>
+            <td>{{ getPromoPrice(p) | number:'1.2-2' }}</td>
+            <td>{{ p.discount }}</td>
+            <td>{{ p.stockQty }}</td>
+            <td>{{ p.soldQty }}</td>
+            <td>{{ p.comments || '-' }}</td>
+            <td>
+              <select [class.invalid-input]="isInvalid(p.id)" [(ngModel)]="drafts[p.id].movementType">
+                <option value="">Choisir</option>
+                <option value="add_purchase">Ajout (achat)</option>
+                <option value="sale">Retrait (vente)</option>
+                <option value="expired">Retrait (invendus)</option>
+              </select>
+            </td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="1" step="1" [(ngModel)]="drafts[p.id].qty" /></td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="0" step="0.01" [(ngModel)]="drafts[p.id].unitPrice" /></td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="0" max="100" [(ngModel)]="drafts[p.id].discount" /></td>
+            <td><button (click)="sendRow(p)">Envoyer</button></td>
+          </tr>
+          <tr *ngFor="let p of fishProducts" [class.error-row]="isInvalid(p.id)">
+            <td colspan="12" *ngIf="rowErrors[p.id]">{{ rowErrors[p.id] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Fruits de mer</h2>
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Prix promo</th>
+            <th>% promo</th>
+            <th>Stock</th>
+            <th>Vendus</th>
+            <th>Commentaires</th>
+            <th>Type</th>
+            <th>Quantite</th>
+            <th>Prix unite</th>
+            <th>Nouveau %</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of seafoodProducts">
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | number:'1.2-2' }}</td>
+            <td>{{ getPromoPrice(p) | number:'1.2-2' }}</td>
+            <td>{{ p.discount }}</td>
+            <td>{{ p.stockQty }}</td>
+            <td>{{ p.soldQty }}</td>
+            <td>{{ p.comments || '-' }}</td>
+            <td>
+              <select [class.invalid-input]="isInvalid(p.id)" [(ngModel)]="drafts[p.id].movementType">
+                <option value="">Choisir</option>
+                <option value="add_purchase">Ajout (achat)</option>
+                <option value="sale">Retrait (vente)</option>
+                <option value="expired">Retrait (invendus)</option>
+              </select>
+            </td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="1" step="1" [(ngModel)]="drafts[p.id].qty" /></td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="0" step="0.01" [(ngModel)]="drafts[p.id].unitPrice" /></td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="0" max="100" [(ngModel)]="drafts[p.id].discount" /></td>
+            <td><button (click)="sendRow(p)">Envoyer</button></td>
+          </tr>
+          <tr *ngFor="let p of seafoodProducts" [class.error-row]="isInvalid(p.id)">
+            <td colspan="12" *ngIf="rowErrors[p.id]">{{ rowErrors[p.id] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Crustaces</h2>
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Prix promo</th>
+            <th>% promo</th>
+            <th>Stock</th>
+            <th>Vendus</th>
+            <th>Commentaires</th>
+            <th>Type</th>
+            <th>Quantite</th>
+            <th>Prix unite</th>
+            <th>Nouveau %</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of crustaceanProducts">
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | number:'1.2-2' }}</td>
+            <td>{{ getPromoPrice(p) | number:'1.2-2' }}</td>
+            <td>{{ p.discount }}</td>
+            <td>{{ p.stockQty }}</td>
+            <td>{{ p.soldQty }}</td>
+            <td>{{ p.comments || '-' }}</td>
+            <td>
+              <select [class.invalid-input]="isInvalid(p.id)" [(ngModel)]="drafts[p.id].movementType">
+                <option value="">Choisir</option>
+                <option value="add_purchase">Ajout (achat)</option>
+                <option value="sale">Retrait (vente)</option>
+                <option value="expired">Retrait (invendus)</option>
+              </select>
+            </td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="1" step="1" [(ngModel)]="drafts[p.id].qty" /></td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="0" step="0.01" [(ngModel)]="drafts[p.id].unitPrice" /></td>
+            <td><input [class.invalid-input]="isInvalid(p.id)" type="number" min="0" max="100" [(ngModel)]="drafts[p.id].discount" /></td>
+            <td><button (click)="sendRow(p)">Envoyer</button></td>
+          </tr>
+          <tr *ngFor="let p of crustaceanProducts" [class.error-row]="isInvalid(p.id)">
+            <td colspan="12" *ngIf="rowErrors[p.id]">{{ rowErrors[p.id] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</ion-content>
